@@ -108,8 +108,8 @@
 			var url = $(this).attr('action');
 			var data = $(this).serialize();
 			$.post(url, data, function(o) {
-
-			}, 'json');
+					console.log(url);
+			},'json');
 
 		});
 	});

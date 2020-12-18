@@ -15,14 +15,10 @@ class Users_model extends CI_Model
 
 	public function login($user_id = null)
 	{
-		if ($user_id === null) {
-			$q = $this->db->get_where('users', ['status' => '1']);
-		} elseif (is_array($user_id)) {			
-			$q = $this->db->get_where('users', $user_id);					
-		} else {
-			$q = $this->db->get_where('users', ['id' => $user_id, 'status' => '1']);
+		print_r($user_id);
+		if (is_array($user_id)) {
+			$q = $this->db->get_where('users', $user_id);			
 		}
-		
 		return $q->result();
 	}
 	public function insert($data)

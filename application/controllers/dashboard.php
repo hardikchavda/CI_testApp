@@ -15,14 +15,15 @@ class Dashboard extends CI_Controller
 	{
 
 		$name = $this->input->post('name');
-		$pass = $this->input->post('pass');		
+		$pass = $this->input->post('pass');
 
 		$result = $this->users_model->login([
 			'name' => $name,
 			'password' => $pass,
-			'status'=> 1
+			'status' => 1
 		]);
-		print_r($result);
+		if ($result)
+			redirect('/dashboard');
 		$this->load->view('header');
 		$this->load->view('login');
 		$this->load->view('footer');
