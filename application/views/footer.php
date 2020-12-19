@@ -108,8 +108,12 @@
 			var url = $(this).attr('action');
 			var data = $(this).serialize();
 			$.post(url, data, function(o) {
-					console.log(url);
-			},'json');
+				if (o.result == 1) {
+					alert('valid login');
+				} else {
+					alert('invalid login');
+				}
+			}, 'json');
 
 		});
 	});

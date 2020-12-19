@@ -14,8 +14,7 @@ class Users_model extends CI_Model
 	}
 
 	public function login($user_id = null)
-	{
-		print_r($user_id);
+	{		
 		if (is_array($user_id)) {
 			$q = $this->db->get_where('users', $user_id);			
 		}
