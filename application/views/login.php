@@ -7,7 +7,7 @@
 		<section id="features">
 			<div class="feature-list">
 				<div class="row">
-					<form name="form" method="post" action="<?= site_url('dashboard/login'); ?>" id="form-id">
+					<form name="form" method="post" action="<?= site_url('users/login'); ?>" id="form-id">
 						<div class="form-group">
 							<label for="name">Email address</label>
 							<input name="name" type="text" class="form-control" id="name" placeholder="Name">

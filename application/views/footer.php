@@ -109,7 +109,7 @@
 			var data = $(this).serialize();
 			$.post(url, data, function(o) {
 				if (o.result == 1) {
-					alert('valid login');
+					window.location.href = '<?= site_url('dashboard'); ?>'
 				} else {
 					alert('invalid login');
 				}

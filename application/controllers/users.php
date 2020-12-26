@@ -22,9 +22,12 @@ class Users extends CI_Controller
 			'password' => $pass,
 			'status' => 1
 		]);
+		//print_r($result[0]->id);
 		$this->output->set_content_type('application_json');
-		if ($result) {
-			$this->session->set_userdata(['user_id' => $result[0]['user_id']]);
+		if ($result) {			
+			$this->session->set_userdata([
+				'user_id' => $result[0]->id
+				]);
 			$this->output->set_output(json_encode(['result' => 1]));
 			return false;
 		}
