@@ -94,30 +94,14 @@
 </div>
 
 <!-- Scripts -->
-<script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+
 <script src="<?= base_url('assets/js/jquery.dropotron.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/browser.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/breakpoints.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/util.js'); ?>"></script>
 <script src="<?= base_url('assets/js/main.js'); ?>"></script>
 
-<script>
-	$(document).ready(function() {
-		$('#form-id').submit(function(evt) {
-			evt.preventDefault();
-			var url = $(this).attr('action');
-			var data = $(this).serialize();
-			$.post(url, data, function(o) {
-				if (o.result == 1) {
-					window.location.href = '<?= site_url('dashboard'); ?>'
-				} else {
-					alert('invalid login');
-				}
-			}, 'json');
 
-		});
-	});
-</script>
 
 </body>
 
