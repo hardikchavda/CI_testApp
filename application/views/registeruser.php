@@ -7,7 +7,7 @@
 		<section id="features">
 			<div class="feature-list">
 				<div class="row">
-					<form name="form" method="post" action="<?= site_url('users/register'); ?>" id="form-id">
+					<form name="form" method="post" action="<?= site_url('users/register'); ?>" id="form-id" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="name">Email address</label>
 							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
@@ -19,6 +19,10 @@
 						<div class="form-group">
 							<label for="confirmPass">Password</label>
 							<input name="confirmPass" type="text" class="form-control" id="confirmPass" placeholder="Confirm Password">
+						</div>
+						<div class="form-group">
+							<label for="uploadFile">Password</label>
+							<input name="uploadFile" type="text" class="form-control" id="uploadFile" placeholder="Upoload">
 						</div>
 						<ul class="actions special">
 							<button type="submit" class="button style1 large">Submit</button>
