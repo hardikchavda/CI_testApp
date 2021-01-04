@@ -18,7 +18,7 @@ class Users_model extends CI_Model
 		if (is_array($user_id)) {
 			$q = $this->db->get_where('users', $user_id);			
 		}
-		return $q->result();
+		return $q->result_array();
 	}
 	public function insert($data)
 	{

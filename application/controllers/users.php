@@ -25,9 +25,7 @@ class Users extends CI_Controller
 		//print_r($result[0]->id);
 		$this->output->set_content_type('application_json');
 		if ($result) {
-			$this->session->set_userdata([
-				'user_id' => $result[0]->id
-			]);
+			$this->session->set_userdata(['user_id' => $result[0]['user_id']]);
 			$this->output->set_output(json_encode(['result' => 1]));
 			return false;
 		}
