@@ -33,8 +33,6 @@ class Users extends CI_Controller
 	}
 	public function register()
 	{
-
-
 		$this->output->set_content_type('application_json');
 
 		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');

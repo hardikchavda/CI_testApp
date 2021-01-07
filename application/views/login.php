@@ -1,4 +1,3 @@
-
 <!-- Main -->
 <section id="main" class="wrapper style2">
 	<div class="title">Login</div>
@@ -7,19 +6,40 @@
 		<section id="features">
 			<div class="feature-list">
 				<div class="row">
-					<form name="form" method="post" action="<?= site_url('users/login'); ?>" id="form-id">
-						<div class="form-group">
-							<label for="name">Email address</label>
-							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label>
-							<input name="pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-						</div>
-						<ul class="actions special">
-							<button type="submit" class="button style1 large">Submit</button>
-						</ul>
-					</form>
+					<?php echo form_open('users/login', ['id' => 'form-id']); ?>
+					<div class="form-group">
+						<label for="name">Email address</label>
+						<?php
+						echo form_input(
+							[
+								'name' => 'name',
+								'placeholder' => 'Name',
+								'class' => 'form-control',
+								'id' => 'name'
+							]
+						);
+						?>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<?php
+						echo form_password(
+							[
+								'name' => 'pass',
+								'placeholder' => 'Password',
+								'class' => 'form-control',
+								'id' => 'exampleInputPassword1'
+							]
+						);
+						?>
+					</div>
+					<ul class="actions special">
+						<!-- <button type="submit" class="button style1 large">Submit</button> -->
+						<?php echo form_submit('submit','Login',['class'=>'button style1 large']); ?>
+						<?php echo form_reset('reset','Reset',['class'=>'button style1 large'])?>
+					</ul>
+					<?php echo form_close(); ?>
+
 				</div>
 			</div>
 		</section>
