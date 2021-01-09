@@ -1,4 +1,4 @@
-
+<?php $this->load->view('header'); ?>
 <!-- Main -->
 <section id="main" class="wrapper style2">
 	<div class="title">Register New User</div>
@@ -52,3 +52,4 @@
 		});
 	});
 </script>
+<?php $this->load->view('footer'); ?>

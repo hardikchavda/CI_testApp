@@ -1,3 +1,4 @@
+<?php $this->load->view('header'); ?>
 		<!-- Intro -->
 		<section id="intro" class="wrapper style1">
 			<div class="title">The Introduction</div>
@@ -119,3 +120,5 @@
 				</div>
 			</div>
 		</section>
+
+		<?php $this->load->view('footer'); ?>
