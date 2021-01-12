@@ -18,6 +18,15 @@ class Users_model extends CI_Model
 		}
 	}
 
+	public function getAllUsers()
+	{
+		$user_id = $this->session->userdata('user_id');
+		$users = $this->db
+			//->get_where('users', ['id' => $user_id]);
+			->get('users');
+		return $users->result();
+	}
+
 	// public function login($user_id = null)
 	// {		
 	// 	if (is_array($user_id)) {

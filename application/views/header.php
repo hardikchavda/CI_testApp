@@ -11,6 +11,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>" />
+	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css'); ?>">
 	<script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
 </head>
 
@@ -51,7 +52,12 @@
 					</li>
 					<li><a href="left-sidebar.html">Left Sidebar</a></li>
 					<li><a href="right-sidebar.html">Right Sidebar</a></li>
-					<li><a href="no-sidebar.html">No Sidebar</a></li>
+					<?php
+					if ($this->session->userdata('user_id')) : ?>
+						<li><a href="<?= site_url('dashboard/logout'); ?>">Welcome! <?php echo $this->session->userdata('user_id');?></a></li>
+					<?php else : ?>
+						<li><a href="<?= site_url('dashboard/logout'); ?>">Welcome! Anonymous</a></li>
+					<?php endif; ?>
 				</ul>
 			</nav>
 

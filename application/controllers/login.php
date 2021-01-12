@@ -12,6 +12,10 @@ class Login extends CI_Controller
 
 	public function index()
 	{
+		if ($this->session->userdata('user_id')) {
+			return redirect('dashboard');
+		}
+
 		$this->load->helper('form');
 		$this->load->view('login');
 	}
@@ -34,9 +38,11 @@ class Login extends CI_Controller
 			if ($result) {
 				//echo "password match";				
 				$this->session->set_userdata('user_id', $result);
-				$this->load->view('dashboard');
+				//$this->load->view('dashboard');
+				return redirect('dashboard');
 			} else {
-				echo "password do not match";
+				$this->session->set_flashdata('loginfailed', 'Invalid Username / Password.');
+				return redirect('login');
 			}
 
 			//

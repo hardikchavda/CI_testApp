@@ -9,6 +9,8 @@ class Dashboard extends CI_Controller
 		$user_id = $this->session->userdata('user_id');
 		if (!$user_id) {
 			$this->logout();
+		} else {
+			$this->load->model('users_model');
 		}
 	}
 
@@ -20,6 +22,8 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('dashboard');
+		$result = $this->users_model->getAllUsers();
+		//print_r($result);
+		$this->load->view('dashboard', ['result' => $result]);
 	}
 }

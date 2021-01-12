@@ -17,7 +17,7 @@
 								'placeholder' => 'Name',
 								'class' => 'form-control',
 								'id' => 'name',
-								'value'=>set_value('name')
+								'value' => set_value('name')
 							]
 						);
 						?>
@@ -37,6 +37,12 @@
 						?>
 						<span> <?php echo form_error('pass'); ?> </span>
 					</div>
+					<?php if ($error = $this->session->flashdata('loginfailed')) : ?>
+						<div class="alert alert-dismissible alert-danger">
+							<!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+							<strong>Oh snap!</strong> <?= $error; ?>
+						</div>
+					<?php endif; ?>
 					<ul class="actions special">
 						<!-- <button type="submit" class="button style1 large">Submit</button> -->
 						<?php echo form_submit('submit', 'Login', ['class' => 'button style1 large']); ?>
