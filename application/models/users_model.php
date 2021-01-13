@@ -27,6 +27,12 @@ class Users_model extends CI_Model
 		return $users->result();
 	}
 
+	public function insert($data)
+	{
+		return $this->db->insert('users', $data);
+		//return $this->db->insert_id();
+	}
+
 	// public function login($user_id = null)
 	// {		
 	// 	if (is_array($user_id)) {
@@ -45,11 +51,7 @@ class Users_model extends CI_Model
 		}
 		return $q->result();
 	}
-	public function insert($data)
-	{
-		$this->db->insert('users', $data);
-		return $this->db->insert_id();
-	}
+
 	public function update($data, $user_id)
 	{
 

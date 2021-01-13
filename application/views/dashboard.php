@@ -21,8 +21,8 @@
 					<td><?= $data->id ?></td>
 					<td><?= $data->name ?></td>
 					<td><?= $data->password ?></td>
-					<td><a href="#" class="btn btn-info">Edit</a></td>
-					<td><a href="#" class="btn btn-danger">Edit</a></td>
+					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-info">Edit</a></td>
+					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-danger">Del</a></td>
 				</tr>
 
 			<?php

@@ -22,8 +22,11 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$result = $this->users_model->getAllUsers();
-		//print_r($result);
+		$result = $this->users_model->getAllUsers();		
 		$this->load->view('dashboard', ['result' => $result]);
+	}
+
+	public function edit_user()
+	{
 	}
 }

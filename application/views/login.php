@@ -37,7 +37,7 @@
 						?>
 						<span> <?php echo form_error('pass'); ?> </span>
 					</div>
-					<?php if ($error = $this->session->flashdata('loginfailed')) : ?>
+					<?php if ($error = $this->session->flashdata('registerfailed')) : ?>
 						<div class="alert alert-dismissible alert-danger">
 							<!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
 							<strong>Oh snap!</strong> <?= $error; ?>

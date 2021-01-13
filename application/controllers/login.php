@@ -26,40 +26,20 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|trim');
 
 		if ($this->form_validation->run() == false) {
-			// echo validation_errors();
-			// $this->output->set_output(json_encode(['result' => 0]));
-			// return false;
 			$this->load->view('login');
 		} else {
-			//print_r($_POST);
+
 			$name = $this->input->post('name');
 			$pass = $this->input->post('pass');
 			$result = $this->users_model->login($name, $pass);
 			if ($result) {
-				//echo "password match";				
 				$this->session->set_userdata('user_id', $result);
-				//$this->load->view('dashboard');
 				return redirect('dashboard');
 			} else {
 				$this->session->set_flashdata('loginfailed', 'Invalid Username / Password.');
 				return redirect('login');
 			}
-
-			//
 		}
-		// $result = $this->users_model->login([
-		// 	'name' => $name,
-		// 	'password' => $pass,
-		// 	'status' => 1
-		// ]);
-		// //print_r($result[0]->id);
-		// $this->output->set_content_type('application_json');
-		// if ($result) {
-		// 	$this->session->set_userdata(['user_id' => $result[0]['id']]);
-		// 	$this->output->set_output(json_encode(['result' => 1]));
-		// 	return false;
-		// }
-		// $this->output->set_output(json_encode(['result' => 0]));
 	}
 
 	public function admin_login()
@@ -69,46 +49,31 @@ class Login extends CI_Controller
 
 	public function register()
 	{
-
 		$this->load->view('registeruser');
 	}
 	public function register_check()
 	{
-		$this->output->set_content_type('application_json');
-
 		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|matches[confirmPass]');
+		$this->form_validation->set_rules('confirmPass', 'Confirm Password', 'required|min_length[4]|matches[pass]');
 
 		if ($this->form_validation->run() == false) {
-			// echo validation_errors();
-			// $this->output->set_output(json_encode(['result' => 0]));
-			// return false;
-			$this->load->view('login');
+			$this->load->view('registeruser');
 		} else {
-			$this->load->view('dashboard');
-		}
-		//print_r($_POST);
-		$name = $this->input->post('name');
-		$pass = $this->input->post('pass');
-		$name = $this->input->post('confirmPass');
-
-
-		$result = $this->users_model->insert([
-			'name' => $name,
-			'password' => $pass
-		]);
-
-		echo $result;
-		die('not ready');
-		//print_r($result[0]->id);
-
-		if ($result) {
-			$this->session->set_userdata([
-				'user_id' => $result[0]->id
+			$name = $this->input->post('name');
+			$pass = $this->input->post('pass');
+			$result = $this->users_model->insert([
+				'name' => $name,
+				'password' => $pass
 			]);
-			$this->output->set_output(json_encode(['result' => 1]));
-			return false;
+			if ($result) {
+				$this->session->set_flashdata('register', 'Registeration Complete');
+				$this->session->set_flashdata('feedback_class', 'alert-success');
+			} else {
+				$this->session->set_flashdata('register', 'Something is wrong ');
+				$this->session->set_flashdata('feedback_class', 'alert-danger');
+			}
+			return redirect('login/register');
 		}
-		$this->output->set_output(json_encode(['result' => 0]));
 	}
 }
