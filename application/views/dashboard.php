@@ -13,10 +13,8 @@
 
 			<?php
 			//var_dump($result);
-
 			foreach ($result as $data) :
 			?>
-
 				<tr>
 					<td><?= $data->id ?></td>
 					<td><?= $data->name ?></td>
@@ -24,19 +22,14 @@
 					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-info">Edit</a></td>
 					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-danger">Del</a></td>
 				</tr>
-
 			<?php
 			endforeach;
 			?>
 		</table>
-
 		<!-- Image -->
 		<!-- <a href="#" class="image featured">
 			<img src="<?= base_url('images/pic01.jpg'); ?>" alt="" />
 		</a> -->
-
-
-
 	</div>
 </section>
 <?php $this->load->view('footer'); ?>

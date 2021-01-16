@@ -1,13 +1,13 @@
 <?php $this->load->view('header'); ?>
 <!-- Main -->
 <section id="main" class="wrapper style2">
-	<div class="title">Register New User</div>
+	<div class="title">Edit User</div>
 	<div class="container">
 		<!-- Features -->
 		<section id="features">
 			<div class="feature-list">
 				<div class="row">
-					<?php echo form_open('login/register_check', ['id' => 'form-id']); ?>
+					<?php echo form_open("dashboard/update_user/{$data->id}", ['id' => 'form-id']); ?>
 					<div class="form-group">
 						<label for="name">Email address</label>
 
@@ -18,7 +18,7 @@
 								'placeholder' => 'Name',
 								'class' => 'form-control',
 								'id' => 'name',
-								'value' => set_value('name')
+								'value' => set_value('name', $data->name)
 							]
 						);
 						?>
@@ -32,7 +32,8 @@
 								'name' => 'pass',
 								'placeholder' => 'Password',
 								'class' => 'form-control',
-								'id' => 'newPass'
+								'id' => 'newPass',
+								'value' => set_value('name', $data->password)
 							]
 						);
 						?>
@@ -57,7 +58,7 @@
 							<label for="uploadFile">User Image</label>
 							<input name="uploadFile" type="file" class="form-control" id="uploadFile" placeholder="Upoload">
 						</div> -->
-					<?php if ($feedback = $this->session->flashdata('register')) : ?>
+					<?php if ($feedback = $this->session->flashdata('edit')) : ?>
 						<div class="alert alert-dismissible <?= $this->session->flashdata('feedback_class'); ?>">
 							<strong>Oh snap!</strong> <?= $feedback; ?>
 						</div>

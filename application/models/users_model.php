@@ -33,6 +33,13 @@ class Users_model extends CI_Model
 		//return $this->db->insert_id();
 	}
 
+	public function dashEditFind($id)
+	{
+		$users = $this->db
+			//->get_where('users', ['id' => $user_id]);
+			->get_where('users', ['id' => $id, 'status' => 1]);
+		return $users->row();
+	}
 	// public function login($user_id = null)
 	// {		
 	// 	if (is_array($user_id)) {
@@ -52,11 +59,12 @@ class Users_model extends CI_Model
 		return $q->result();
 	}
 
-	public function update($data, $user_id)
+	public function update($id, $name, $pass)
 	{
-
-		$this->db->where(['id' => $user_id]);
-		$this->db->update('users', $data);
+		$this->db->set('name', $name);
+		$this->db->set('password', $pass);
+		$this->db->where('id', $id)
+			->update('users');
 		return $this->db->affected_rows();
 	}
 	public function delete($user_id)
