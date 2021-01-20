@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller
 	}
 	public function update_user($id)
 	{
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');
+		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|matches[confirmPass]');
 		$this->form_validation->set_rules('confirmPass', 'Confirm Password', 'required|min_length[4]|matches[pass]');
 
@@ -44,14 +44,30 @@ class Dashboard extends CI_Controller
 			$name = $this->input->post('name');
 			$pass = $this->input->post('pass');
 			$result = $this->users_model->update($id, $name, $pass);
-			if ($result) {
+			if ($result == 1) {
 				$this->session->set_flashdata('edit', 'Records Updated Successfully');
 				$this->session->set_flashdata('feedback_class', 'alert-success');
+			} else if ($result == 0) {
+				$this->session->set_flashdata('edit', 'Nothing is Changed. ');
+				$this->session->set_flashdata('feedback_class', 'alert-info');
 			} else {
-				$this->session->set_flashdata('edit', 'Something is wrong ');
+				$this->session->set_flashdata('edit', 'Nothing is Changed. ');
 				$this->session->set_flashdata('feedback_class', 'alert-danger');
 			}
-			return redirect('dashboardedit');
+			return redirect('dashboard/edit_user/' . $id);
 		}
+	}
+	public function delete_user()
+	{
+		$id = $this->input->post('id');
+		$result = $this->users_model->delete($id);
+		if ($result) {
+			$this->session->set_flashdata('delete', 'Records Deleted Successfully');
+			$this->session->set_flashdata('feedback_class', 'alert-info');
+		} else {
+			$this->session->set_flashdata('delete', 'Something is wrong ');
+			$this->session->set_flashdata('feedback_class', 'alert-danger');
+		}
+		return redirect('dashboard');
 	}
 }

@@ -64,7 +64,7 @@
 						</div>
 					<?php endif; ?>
 					<ul class="actions special">
-						<?php echo form_submit('submit', 'Add New User', ['class' => 'button style1 large']); ?>
+						<?php echo form_submit('submit', 'Edit User', ['class' => 'button style1 large']); ?>
 						<?php echo form_reset('reset', 'Reset', ['class' => 'button style1 large']) ?>
 					</ul>
 					<?php
