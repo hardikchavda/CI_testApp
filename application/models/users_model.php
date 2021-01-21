@@ -18,10 +18,19 @@ class Users_model extends CI_Model
 		}
 	}
 
-	public function getAllUsers()
+
+	public function num_rows()
+	{
+		$users = $this->db
+			//->get_where('users', ['id' => $user_id]);
+			->get('users');
+		return $users->num_rows();
+	}
+	public function getAllUsers($limit, $offset)
 	{
 		$user_id = $this->session->userdata('user_id');
 		$users = $this->db
+			->limit($limit, $offset)
 			//->get_where('users', ['id' => $user_id]);
 			->get('users');
 		return $users->result();

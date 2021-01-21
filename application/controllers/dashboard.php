@@ -22,7 +22,14 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$result = $this->users_model->getAllUsers();
+		$this->load->library('pagination');
+		$config = [
+			'base_url' => base_url('dashboard/index'),
+			'per_page' => 5,
+			'total_rows' => $this->users_model->num_rows(),
+		];
+		$this->pagination->initialize($config);
+		$result = $this->users_model->getAllUsers($config['per_page'], $this->uri->segment(3));
 		$this->load->view('dashboard', ['result' => $result]);
 	}
 

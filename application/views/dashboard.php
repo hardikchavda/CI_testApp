@@ -2,12 +2,15 @@
 <!-- Main -->
 <section id="main" class="wrapper style2">
 	<div class="title">Dashboard</div>
-	<div class="container">
+	<div class="container" style="border: 1px solid;">
 		<?php if ($feedback = $this->session->flashdata('delete')) : ?>
 			<div class="alert alert-dismissible <?= $this->session->flashdata('feedback_class'); ?>">
 				<strong>Oh snap!</strong> <?= $feedback; ?>
 			</div>
 		<?php endif; ?>
+		<div class="float-right">
+			<a href="<?= base_url('login/register') ?>" class="btn btn-primary">Add User</a>
+		</div>
 		<table class="table table-bordered">
 			<tr>
 				<th>Id</th>
@@ -38,6 +41,21 @@
 			endforeach;
 			?>
 		</table>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item disabled">
+					<a class="page-link" href="#" tabindex="-1">Previous</a>
+				</li>
+				<!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+				<?= $this->pagination->create_links(); ?>
+				<li class="page-item">
+					<a class="page-link" href="#">Next</a>
+				</li>
+			</ul>
+		</nav>
+		
 		<!-- Image -->
 		<!-- <a href="#" class="image featured">
 			<img src="<?= base_url('images/pic01.jpg'); ?>" alt="" />
