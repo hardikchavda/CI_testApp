@@ -27,6 +27,16 @@ class Dashboard extends CI_Controller
 			'base_url' => base_url('dashboard/index'),
 			'per_page' => 5,
 			'total_rows' => $this->users_model->num_rows(),
+			'full_tag_open' => '<ul class="pagination justify-content-center">',
+			'full_tag_close' => '</ul>',
+			'next_tag_open' => '<li class="page-item"><a class="page-link">Next',
+			'next_tag_close' => '</a></li>',
+			'prev_tag_open' => '<li class="page-item"><a class="page-link">Prev',
+			'prev_tag_close' => '</a></li>',
+			'num_tag_open' => '<li class="page-item"><a class="page-link">',
+			'num_tag_close' => '</a></li>',
+			'cur_tag_open' => '<li class="active page-item"><a class="page-link">',
+			'cur_tag_close' => '</a></li>',
 		];
 		$this->pagination->initialize($config);
 		$result = $this->users_model->getAllUsers($config['per_page'], $this->uri->segment(3));
