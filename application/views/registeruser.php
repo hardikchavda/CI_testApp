@@ -7,7 +7,7 @@
 		<section id="features">
 			<div class="feature-list">
 				<div class="row">
-					<?php echo form_open('login/register_check', ['id' => 'form-id']); ?>
+					<?php echo form_open_multipart('login/register_check', ['id' => 'form-id']); ?>
 					<div class="form-group">
 						<label for="name">Email address</label>
 
@@ -53,10 +53,20 @@
 						?>
 						<span> <?php echo form_error('confirmPass'); ?> </span>
 					</div>
-					<!-- <div class="form-group">
-							<label for="uploadFile">User Image</label>
-							<input name="uploadFile" type="file" class="form-control" id="uploadFile" placeholder="Upoload">
-						</div> -->
+					<div class="form-group">
+						<label for="fileUpload">Picture Upload </label>
+						<?php
+						echo form_upload(
+							[
+								'name' => 'file',
+								'class' => 'form-control',
+								'id' => 'fileUpload'
+							]
+						);
+						?>
+						<span> <?php echo form_error('fileUpload'); ?> </span>
+					</div>
+
 					<?php if ($feedback = $this->session->flashdata('register')) : ?>
 						<div class="alert alert-dismissible <?= $this->session->flashdata('feedback_class'); ?>">
 							<strong>Oh snap!</strong> <?= $feedback; ?>
