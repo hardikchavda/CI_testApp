@@ -21,10 +21,11 @@
 
 			<?php
 			//var_dump($result);
+			$count = $this->uri->segment(3);
 			foreach ($result as $data) :
 			?>
 				<tr>
-					<td><?= $data->id ?></td>
+					<td><?= ++$count ?></td>
 					<td><?= $data->name ?></td>
 					<td><?= $data->password ?></td>
 					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-info">Edit</a></td>
@@ -56,7 +57,7 @@
 			</ul> -->
 			<?= $this->pagination->create_links(); ?>
 		</nav>
-		
+
 		<!-- Image -->
 		<!-- <a href="#" class="image featured">
 			<img src="<?= base_url('images/pic01.jpg'); ?>" alt="" />
