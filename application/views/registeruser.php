@@ -64,7 +64,13 @@
 							]
 						);
 						?>
-						<span> <?php echo form_error('fileUpload'); ?> </span>
+						<span> <?php //echo form_error('fileUpload'); 
+								?> </span>
+						<span>
+							<?php if (isset($upload_error)) {
+								echo $upload_error;
+							} ?>
+						</span>
 					</div>
 
 					<?php if ($feedback = $this->session->flashdata('register')) : ?>

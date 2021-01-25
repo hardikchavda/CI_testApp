@@ -53,12 +53,20 @@ class Login extends CI_Controller
 	}
 	public function register_check()
 	{
+
+		$config = [
+			'upload_path' => 'images',
+			'allowed_types' => 'jpg|gif|png|jpeg',
+		];
+		var_dump($config);
+		$this->load->library('upload', $config);
 		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|matches[confirmPass]');
 		$this->form_validation->set_rules('confirmPass', 'Confirm Password', 'required|min_length[4]|matches[pass]');
 
-		if ($this->form_validation->run() == false) {
-			$this->load->view('registeruser');
+		if ($this->form_validation->run() == false && $this->file->upload->do_upload() == false) {
+			$upload_error = $this->upload->display_errors();
+			$this->load->view('registeruser', compact($upload_error));
 		} else {
 			$name = $this->input->post('name');
 			$pass = $this->input->post('pass');
