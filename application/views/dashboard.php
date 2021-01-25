@@ -16,6 +16,7 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Password</th>
+				<th>User</th>
 				<th>Options</th>
 			</tr>
 
@@ -28,6 +29,7 @@
 					<td><?= ++$count ?></td>
 					<td><?= $data->name ?></td>
 					<td><?= $data->password ?></td>
+					<td> <img src="<?= $data->img_path ?>"></td>
 					<td><a href="<?= base_url("dashboard/edit_user/{$data->id}") ?>" class="btn btn-info">Edit</a></td>
 					<td>
 						<?=

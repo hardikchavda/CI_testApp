@@ -58,18 +58,14 @@
 						<?php
 						echo form_upload(
 							[
-								'name' => 'file',
+								'name' => 'userfile',
 								'class' => 'form-control',
 								'id' => 'fileUpload'
 							]
 						);
 						?>
-						<span> <?php //echo form_error('fileUpload'); 
-								?> </span>
 						<span>
-							<?php if (isset($upload_error)) {
-								echo $upload_error;
-							} ?>
+							<?php if (isset($upload_error)) echo $upload_error; ?>
 						</span>
 					</div>
 
