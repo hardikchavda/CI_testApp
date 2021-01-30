@@ -61,6 +61,9 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|matches[confirmPass]');
 		$this->form_validation->set_rules('confirmPass', 'Confirm Password', 'required|min_length[4]|matches[pass]');
+		if (empty($_FILES['userfile']['name'])) {
+			$this->form_validation->set_rules('userfile', 'Document', 'required');
+		}
 		$this->load->library('upload', $config);
 		if ($this->form_validation->run() == false && $this->upload->do_upload() == false) {
 			$upload_error = $this->upload->display_errors();
