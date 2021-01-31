@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
-
 	function __construct()
 	{
 		parent::__construct();
@@ -61,14 +60,11 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|is_unique[users.name]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[4]|matches[confirmPass]');
 		$this->form_validation->set_rules('confirmPass', 'Confirm Password', 'required|min_length[4]|matches[pass]');
-		if (empty($_FILES['userfile']['name'])) {
+		if (empty($_FILES['userfile'])) {
 			$this->form_validation->set_rules('userfile', 'Document', 'required');
 		}
 		$this->load->library('upload', $config);
-		if ($this->form_validation->run() == false && $this->upload->do_upload() == false) {
-			$upload_error = $this->upload->display_errors();
-			$this->load->view('registeruser', compact('upload_error'));
-		} else {
+		if ($this->form_validation->run() && $this->upload->do_upload()) {
 			$name = $this->input->post('name');
 			$pass = $this->input->post('pass');
 			$data = $this->upload->data();
@@ -86,6 +82,9 @@ class Login extends CI_Controller
 				$this->session->set_flashdata('feedback_class', 'alert-danger');
 			}
 			return redirect('login/register');
+		} else {
+			$upload_error = $this->upload->display_errors();
+			$this->load->view('registeruser', compact('upload_error'));
 		}
 	}
 }

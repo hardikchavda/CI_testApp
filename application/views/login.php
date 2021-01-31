@@ -24,20 +24,20 @@
 						<span> <?php echo form_error('name'); ?> </span>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
+						<label for="pass">Password</label>
 						<?php
 						echo form_password(
 							[
 								'name' => 'pass',
 								'placeholder' => 'Password',
 								'class' => 'form-control',
-								'id' => 'exampleInputPassword1'
+								'id' => 'pass'
 							]
 						);
 						?>
 						<span> <?php echo form_error('pass'); ?> </span>
 					</div>
-					<?php if ($error = $this->session->flashdata('registerfailed')) : ?>
+					<?php if ($error = $this->session->flashdata('loginfailed')) : ?>
 						<div class="alert alert-dismissible alert-danger">
 							<!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
 							<strong>Oh snap!</strong> <?= $error; ?>
